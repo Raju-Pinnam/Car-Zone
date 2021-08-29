@@ -37,12 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django.contrib.postgres',
     # third party
     'django_extensions',
 
     # local apps
-    'pages.apps.PagesConfig'
+    'pages.apps.PagesConfig',
+    'teams.apps.TeamsConfig',
 ]
 
 MIDDLEWARE = [
