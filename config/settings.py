@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     # third party
     'django_extensions',
+    'ckeditor',
 
     # local apps
     'pages.apps.PagesConfig',
     'teams.apps.TeamsConfig',
+    'cars.apps.CarsConfig',
 ]
 
 MIDDLEWARE = [

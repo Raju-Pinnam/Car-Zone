@@ -1,7 +1,9 @@
 {% load static %}
+{% url 'pages:home' as home_url %}
 {% url 'pages:about' as about_url %}
 {% url 'pages:services' as services_url %}
 {% url 'pages:contact' as contact_url %}
+{% url 'cars:list' as car_list_url %}
 <!-- Main header start -->
 <header class="main-header sticky-header header-with-top">
     <div class="container">
@@ -16,30 +18,49 @@
             <div class="navbar-collapse collapse w-100" id="navbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link dropdown-toggle" href="{% url 'pages:home' %}" id="navbarDropdownMenuLink"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link
+                            {% if home_url == request.path %}
+                              active
+                            {% endif %}
+                        " href="{{home_url}}">
                             Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cars.html">
+                        <a class="nav-link
+                        {% if car_list_url == request.path %}
+                              active
+                            {% endif %}
+                            " href="{{car_list_url}}">
                             Cars
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{about_url}}">
+                        <a class="nav-link
+                        {% if about_url == request.path %}
+                              active
+                            {% endif %}
+                        " href="{{about_url}}">
                             About
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{services_url}}">
+                        <a class="nav-link
+                        {% if services_url == request.path %}
+                              active
+                            {% endif %}
+                        " href="{{services_url}}">
                             Services
                         </a>
                     </li>
 
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="{{contact_url }}">Contact</a>
+                        <a class="nav-link
+                        {% if contact_url == request.path %}
+                              active
+                            {% endif %}
+                        " href="{{contact_url }}">Contact</a>
                     </li>
                     <li class="nav-item dropdown m-hide">
                         <a href="#full-page-search" class="nav-link h-icon">
