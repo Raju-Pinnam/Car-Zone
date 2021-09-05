@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from django.contrib.messages import constants as messages
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'ckeditor',
 
     # local apps
+    'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
     'teams.apps.TeamsConfig',
     'cars.apps.CarsConfig',
@@ -142,3 +144,18 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CUSTOM AUTHENTICATION
+
+AUTHENTICATION_BACKENDS = {
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.authentication.EmailAuthBackend',
+}
+
+
+# Message Framwork
+MESSAGE_TAGS = {
+    messages.INFO: 'info',
+    messages.ERROR: 'danger',
+    50: 'critical'
+}
