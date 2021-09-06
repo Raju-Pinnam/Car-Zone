@@ -1,6 +1,6 @@
 .venv
 /assets-root
-
+/fixtures
 
 *.log
 *.pot

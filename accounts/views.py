@@ -8,6 +8,9 @@ User = get_user_model()
 
 
 def login_user(request):
+    next_get = request.GET.get('next')
+    next_post = request.POST.get("next")
+    _next = next_get or next_post or None
     if request.method == "POST":
         data = request.POST
         username = data.get('username')
@@ -15,12 +18,15 @@ def login_user(request):
         user = auth.authenticate(username=username, password=password)
         if user:
             auth.login(request, user)
+            if _next:
+                print("Coming Here")
+                return redirect(_next)
             messages.success(
                 request, f"{user.username} Logged Successfully into your account.")
             return redirect('accounts_app:dashboard')
         else:
             messages.error(request, "Invalid Login credentials")
-    return render(request, 'accounts/login.html')
+    return render(request, 'accounts/login.html', {'next': _next})
 
 
 def register_user(request):
@@ -53,7 +59,12 @@ def register_user(request):
 
 @login_required
 def dashboard_user(request):
-    return render(request, 'accounts/dashboard.html')
+    user = request.user
+    contacts = user.user_enquires.all().order_by('-created_at')
+    context = {
+        'contacts': contacts,
+    }
+    return render(request, 'accounts/dashboard.html', context)
 
 
 @login_required

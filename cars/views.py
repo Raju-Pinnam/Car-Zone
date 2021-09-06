@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 from .models import Car
@@ -31,6 +31,7 @@ class CarListView(ListView):
         return context
 
 
+@login_required
 def car_detail(request, id):
     car = get_object_or_404(Car, pk=id)
     context = {'car': car}

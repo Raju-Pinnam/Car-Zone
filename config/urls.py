@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('pages.urls', namespace='pages')),
     path('cars/', include('cars.urls', namespace='cars')),
     path('accounts/', include('accounts.urls', namespace='accounts_app')),
+    path('contacts/', include('contacts.urls', namespace='contacts_app')),
 ]
 
 if settings.DEBUG:

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'teams.apps.TeamsConfig',
     'cars.apps.CarsConfig',
+    'contacts.apps.ContactsConfig',
 ]
 
 MIDDLEWARE = [
@@ -159,3 +160,12 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     50: 'critical'
 }
+
+# Email Settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'pinnampadmaraju@gmail.com'
+EMAIL_HOST_PASSWORD = 'Naninaidu35*'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
