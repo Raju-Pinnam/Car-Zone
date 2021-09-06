@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #     }
 # }
 DATABASES = {'default': config(
-    'DATA_BASE_URL', default=config('DB_URL'), cast=dburl)}
+    'DATABASE_URL', default=config('DB_URL'), cast=dburl)}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
